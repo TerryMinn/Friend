@@ -2,7 +2,7 @@ import AiClient from "@/components/ai-client";
 import React from "react";
 
 const Page = () => {
-  return <main className="w-dvw h-dvh"></main>;
+  return <main></main>;
 };
 
 export default Page;

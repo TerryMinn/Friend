@@ -1,3 +1,4 @@
+import Background from "@/components/shared/background";
 import { Metadata } from "next";
 import React from "react";
 
@@ -13,7 +14,12 @@ type AuthLayoutProps = {
 };
 
 const AuthLayout = ({ children }: AuthLayoutProps) => {
-  return <main>{children}</main>;
+  return (
+    <main>
+      <Background />
+      {children}
+    </main>
+  );
 };
 
 export default AuthLayout;
