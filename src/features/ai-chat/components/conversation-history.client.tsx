@@ -1,16 +1,11 @@
 import { ScrollArea } from "@radix-ui/react-scroll-area";
 import React from "react";
-import TypingIndicator from "./typing-indicator";
 
 type ConversationHistoryProps = {
   conversations: ConversationType[];
-  isSpeaking: boolean;
 };
 
-const ConversationHistory = ({
-  conversations,
-  isSpeaking,
-}: ConversationHistoryProps) => {
+const ConversationHistory = ({ conversations }: ConversationHistoryProps) => {
   if (conversations.length === 0) {
     return (
       <div className="flex items-center justify-center h-full text-gray-500">
@@ -41,7 +36,6 @@ const ConversationHistory = ({
           </div>
         ))}
       </div>
-      {isSpeaking && <TypingIndicator />}
     </ScrollArea>
   );
 };
