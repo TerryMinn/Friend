@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 import { Canvas } from "@react-three/fiber";
-import BoyAvatar from "./model/boy-avatar";
+import BoyAvatar from "./shared/model/boy-avatar";
+import GirlAvatar from "./shared/model/girl-avatar";
 
 const AiClient = () => {
   const [hasPermission, setHasPermission] = useState(false);
@@ -73,7 +74,7 @@ const AiClient = () => {
 
   const toggleMute = async () => {
     try {
-      await conversation.setVolume({ volume: isMuted ? 1 : 0 });
+      conversation.setVolume({ volume: isMuted ? 1 : 0 });
       setIsMuted(!isMuted);
     } catch (error) {
       setErrorMessage("Failed to change volume");
@@ -88,7 +89,8 @@ const AiClient = () => {
         <directionalLight position={[0, 10, 10]} intensity={2} />
         <directionalLight position={[0, -10, -10]} intensity={2} />
 
-        <BoyAvatar isSpeaking={isSpeaking} scale={2} position={[0, -3.3, 1]} />
+        {/* <BoyAvatar isSpeaking={isSpeaking} scale={2} position={[0, -3.3, 1]} /> */}
+        <GirlAvatar isSpeaking={isSpeaking} scale={2} position={[0, -3.3, 1]} />
       </Canvas>
       <Card className="w-full max-w-md mx-auto">
         <CardHeader>
