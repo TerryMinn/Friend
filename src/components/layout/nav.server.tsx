@@ -13,7 +13,7 @@ const Nav = (props: Props) => {
         <div className="flex items-center justify-between">
           <div className="flex items-center">
             <Link href="/" className="text-2xl font-bold ">
-              Friend Ai
+              Friend AI
             </Link>
           </div>
           <NavLink />

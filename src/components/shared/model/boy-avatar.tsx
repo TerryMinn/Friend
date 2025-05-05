@@ -11,6 +11,7 @@ import React, { JSX, useEffect, useRef } from "react";
 import { useGraph } from "@react-three/fiber";
 import { useAnimations, useFBX, useGLTF } from "@react-three/drei";
 import { GLTF, SkeletonUtils } from "three-stdlib";
+import { useConversation } from "@11labs/react";
 
 type GLTFResult = GLTF & {
   nodes: {

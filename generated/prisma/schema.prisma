@@ -15,12 +15,38 @@ datasource db {
 }
 
 model User {
-  id       String  @id @default(cuid())
-  name     String?
-  email    String  @unique
-  image    String?
-  password String?
+  id            String         @id @default(cuid())
+  name          String?
+  email         String         @unique
+  image         String?
+  password      String?
+  conversations Conversation[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+}
+
+model Conversation {
+  id        String    @id @default(cuid())
+  user      User      @relation(fields: [userId], references: [id])
+  userId    String
+  messages  Message[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Message {
+  id             String       @id @default(cuid())
+  conversation   Conversation @relation(fields: [conversationId], references: [id])
+  conversationId String
+
+  source  MessageSource
+  message String
+
+  createdAt DateTime @default(now())
+}
+
+enum MessageSource {
+  user
+  ai
 }
