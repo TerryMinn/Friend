@@ -17,7 +17,7 @@ import { useRegitserMutate } from "../hook/useAuthMutate";
 import Link from "next/link";
 
 const RegisterForm = () => {
-  const { control, formData, handleSubmit, isPending, onSubmit, state } =
+  const { control, formData, handleSubmit, isPending, onSubmit } =
     useRegitserMutate();
   return (
     <Form {...formData}>

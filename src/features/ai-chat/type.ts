@@ -1,1 +1,1 @@
-type ConversationType = { source: "ai" | "user"; message: string };
+export type ConversationType = { source: "ai" | "user"; message: string };

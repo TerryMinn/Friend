@@ -1,5 +1,6 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import React, { useEffect, useRef } from "react";
+import { ConversationType } from "../type";
 
 type ConversationHistoryProps = {
   conversations: ConversationType[];

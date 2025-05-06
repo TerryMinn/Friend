@@ -1,5 +1,4 @@
 import { ActionState } from "@/type";
-import { SignInResponse } from "next-auth/react";
 import { useEffect } from "react";
 import { toast } from "sonner";
 

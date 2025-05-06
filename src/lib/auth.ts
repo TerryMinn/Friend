@@ -3,7 +3,7 @@ import { PrismaAdapter } from "@auth/prisma-adapter";
 import { db } from "@/lib/db/prisma";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import { JWT } from "next-auth/jwt";
-import { LoginT, AuthUser } from "@/features/auth/type";
+import { AuthUser } from "@/features/auth/type";
 import { getUserByEmail } from "@/actions/user.action";
 import Credentials from "next-auth/providers/credentials";
 import bycrypt from "bcryptjs";

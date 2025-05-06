@@ -8,12 +8,13 @@ export const metadata: Metadata = {
 };
 
 type LoginProps = {
-  searchParams: {
+  searchParams: Promise<{
     verify?: boolean;
-  };
+  }>;
 };
 
-const Login = ({ searchParams: { verify } }: LoginProps) => {
+const Login = async ({ searchParams }: LoginProps) => {
+  const { verify } = await searchParams;
   return (
     <section className="flex min-h-screen items-center justify-center bg-muted/40 p-4">
       <LoginForm verify={verify} />

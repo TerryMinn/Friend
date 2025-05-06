@@ -10,7 +10,6 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Mic, MicOff, Volume2, VolumeX } from "lucide-react";
 import { Canvas } from "@react-three/fiber";
-import BoyAvatar from "./shared/model/boy-avatar";
 import GirlAvatar from "./shared/model/girl-avatar";
 
 const AiClient = () => {

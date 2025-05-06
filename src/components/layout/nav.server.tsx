@@ -2,9 +2,7 @@ import Link from "next/link";
 import React from "react";
 import NavLink from "./nav-link.client";
 
-type Props = {};
-
-const Nav = (props: Props) => {
+const Nav = () => {
   return (
     <nav
       className={`fixed w-full top-0 left-0 right-0 py-4 bg-primary-foreground  flex justify-center z-40 mx-auto shadow-md`}

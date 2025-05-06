@@ -6,7 +6,6 @@ import { hashPassword, sendVerifyEmail } from "@/lib/utils";
 import { ActionState } from "@/type";
 import { RegisterT } from "@/features/auth/type";
 import { nanoid } from "nanoid";
-import { redirect } from "next/navigation";
 
 export const getUserByEmail = async (email: string) => {
   try {

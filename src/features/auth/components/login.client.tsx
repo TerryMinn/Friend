@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect } from "react";
+import React from "react";
 import {
   Card,
   CardContent,
@@ -15,7 +15,6 @@ import InputController from "@/components/shared/form/Input-controller";
 import { Form } from "@/components/ui/form";
 import { useLoginMutate } from "../hook/useAuthMutate";
 import Link from "next/link";
-import { toast } from "sonner";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 type LoginFormProps = {
@@ -83,7 +82,7 @@ const LoginForm = ({ verify }: LoginFormProps) => {
             </Button>
           </CardFooter>
           <div className="text-center text-sm space-x-1">
-            <span>Don't have an account ?</span>
+            <span>Don&apos;t have an account ?</span>
             <span className="text-blue-500">
               <Link href="/register">Register</Link>
             </span>

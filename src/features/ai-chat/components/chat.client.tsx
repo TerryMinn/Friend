@@ -6,6 +6,7 @@ import ConversationHistory from "./conversation-history.client";
 import { Button } from "@/components/ui/button";
 import { Mic, MicOff } from "lucide-react";
 import useAiChat from "../hook/useAiChat";
+import { ConversationType } from "../type";
 
 type ChatProps = {
   conversations: ConversationType[];

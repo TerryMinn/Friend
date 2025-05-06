@@ -2,12 +2,13 @@ import { db } from "@/lib/db/prisma";
 import { redirect } from "next/navigation";
 
 type VerifyEmailProps = {
-  searchParams: {
+  searchParams: Promise<{
     token: string;
-  };
+  }>;
 };
 
-const VerifyEmail = async ({ searchParams: { token } }: VerifyEmailProps) => {
+const VerifyEmail = async ({ searchParams }: VerifyEmailProps) => {
+  const { token } = await searchParams;
   if (!token) {
     redirect("/login");
   }

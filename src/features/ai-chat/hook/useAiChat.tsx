@@ -1,6 +1,6 @@
 import { storeConversation } from "@/actions/conversation.action";
 import { useConversation } from "@11labs/react";
-import { startTransition, useEffect, useState } from "react";
+import { startTransition, useState } from "react";
 
 const useAiChat = () => {
   const [errorMessage, setErrorMessage] = useState<string>("");

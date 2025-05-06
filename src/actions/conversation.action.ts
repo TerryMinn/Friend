@@ -4,7 +4,7 @@ import { db } from "@/lib/db/prisma";
 import { getServerSession } from "next-auth";
 import { getUserByEmail } from "./user.action";
 import { revalidatePath } from "next/cache";
-import { signOut } from "next-auth/react";
+import { ConversationType } from "@/features/ai-chat/type";
 
 const AuthVerify = async () => {
   const session = await getServerSession();
@@ -69,10 +69,11 @@ export const storeConversation = async (payload: ConversationType) => {
   }
 };
 
-export const getConversation = async (): Promise<
-  | { con: true; data: ConversationType[]; message: string }
-  | { con: false; message: string }
-> => {
+export const getConversation = async (): Promise<{
+  con: boolean;
+  data?: ConversationType[];
+  message: string;
+}> => {
   try {
     const authUser = await AuthVerify();
 
