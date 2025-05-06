@@ -14,8 +14,6 @@ export async function middleware(req: NextRequest) {
     secret: process.env.AUTH_SECRET!,
   });
 
-  console.log("\x1b[36m%s\x1b[0m", nextUrl, "next url");
-
   const APIAUTH_ROUTE = nextUrl.pathname.startsWith(PREFIX_ROUTE);
   const isAUTH_ROUTE = AUTH_ROUTE.includes(nextUrl.pathname);
 

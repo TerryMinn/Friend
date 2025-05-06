@@ -1,5 +1,5 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 type ConversationHistoryProps = {
   conversations: ConversationType[];
@@ -7,6 +7,12 @@ type ConversationHistoryProps = {
 
 const ConversationHistory = ({ conversations }: ConversationHistoryProps) => {
   console.log(conversations, "conversation");
+  const endRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
+  }, [conversations]);
+
   if (conversations.length === 0) {
     return (
       <div className="flex items-center justify-center h-full text-gray-500">
@@ -36,6 +42,7 @@ const ConversationHistory = ({ conversations }: ConversationHistoryProps) => {
             </div>
           </div>
         ))}
+        <div ref={endRef} />
       </div>
     </ScrollArea>
   );
