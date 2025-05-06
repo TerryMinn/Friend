@@ -91,6 +91,16 @@ export const handlers = NextAuth({
         );
 
         if (comparePassword) {
+          const isVerify = await db.emailVerify.findFirst({
+            where: {
+              userId: userFinder.id,
+            },
+          });
+
+          if (!isVerify || !isVerify.isVerify) {
+            throw new Error("Please verify your email first");
+          }
+
           return {
             id: userFinder.id,
             email: userFinder.email,

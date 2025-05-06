@@ -7,10 +7,16 @@ export const metadata: Metadata = {
   description: "Login to your account",
 };
 
-const Login = () => {
+type LoginProps = {
+  searchParams: {
+    verify?: boolean;
+  };
+};
+
+const Login = ({ searchParams: { verify } }: LoginProps) => {
   return (
     <section className="flex min-h-screen items-center justify-center bg-muted/40 p-4">
-      <LoginForm />
+      <LoginForm verify={verify} />
     </section>
   );
 };

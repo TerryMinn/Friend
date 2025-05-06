@@ -2,9 +2,11 @@
 
 import { RegisterSchema } from "@/features/auth/schema/auth.schema";
 import { db } from "@/lib/db/prisma";
-import { hashPassword } from "@/lib/utils";
+import { hashPassword, sendVerifyEmail } from "@/lib/utils";
 import { ActionState } from "@/type";
 import { RegisterT } from "@/features/auth/type";
+import { nanoid } from "nanoid";
+import { redirect } from "next/navigation";
 
 export const getUserByEmail = async (email: string) => {
   try {
@@ -37,17 +39,33 @@ export const RegisterUser = async (state: ActionState, payload: RegisterT) => {
       throw new Error("User already exists");
     }
 
-    await db.user.create({
-      data: {
-        name,
-        email,
-        password: hashPassword(password),
-      },
+    const verifyData = await db.$transaction(async (tx) => {
+      const user = await tx.user.create({
+        data: {
+          name,
+          email,
+          password: hashPassword(password),
+        },
+      });
+
+      const verifyEmail = await tx.emailVerify.create({
+        data: {
+          userId: user.id,
+          token: nanoid(),
+        },
+      });
+
+      return {
+        user,
+        verifyEmail,
+      };
     });
+
+    await sendVerifyEmail(verifyData.user.email, verifyData.verifyEmail.token);
 
     return {
       con: true,
-      message: "User created successfully",
+      message: "Email send successfully",
     };
   } catch (e) {
     console.log(e);

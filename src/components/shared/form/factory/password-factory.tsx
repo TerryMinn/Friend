@@ -31,18 +31,26 @@ const PasswordFactory = ({
           <FormControl>
             <div
               tabIndex={0}
-              className="flex justify-between items-center group focus-within:ring-1 focus-within:ring-ring border border-input rounded-md bg-transparent shadow-sm pr-2"
+              className="flex justify-between items-center group focus-within:ring-1 focus-within:ring-ring border border-input rounded-md  shadow-sm pr-2 dark:bg-input/30"
             >
               <Input
-                className="border-none outline-none shadow-none focus-visible:ring-0"
+                className="border-none focus-within:bg-transparent dark:bg-transparent outline-none shadow-none focus-visible:ring-0 focus-within:ring-0"
                 type={show ? "text" : "password"}
                 placeholder={placeholder}
                 {...field}
               />
               {show ? (
-                <EyeClosedIcon size={18} onClick={() => setShow(false)} />
+                <EyeClosedIcon
+                  className="text-muted-foreground group-focus-within:text-ring cursor-pointer"
+                  size={18}
+                  onClick={() => setShow(false)}
+                />
               ) : (
-                <EyeIcon size={18} onClick={() => setShow(true)} />
+                <EyeIcon
+                  className="text-muted-foreground group-focus-within:text-ring cursor-pointer"
+                  size={18}
+                  onClick={() => setShow(true)}
+                />
               )}
             </div>
           </FormControl>

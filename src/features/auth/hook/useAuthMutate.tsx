@@ -13,6 +13,8 @@ import { ActionState } from "@/type";
 const InitialValue = {
   email: "",
   password: "",
+  name: "",
+  confirmPassword: "",
 };
 
 const LoginAction = async (

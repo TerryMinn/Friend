@@ -9,5 +9,8 @@ namespace NodeJS {
     // Auth
     NEXTAUTH_SECRET: string;
     NEXTAUTH_URL: string;
+
+    // mail
+    RESEND_API_KEY: string;
   }
 }

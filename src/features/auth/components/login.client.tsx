@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { useEffect } from "react";
 import {
   Card,
   CardContent,
@@ -15,10 +15,17 @@ import InputController from "@/components/shared/form/Input-controller";
 import { Form } from "@/components/ui/form";
 import { useLoginMutate } from "../hook/useAuthMutate";
 import Link from "next/link";
+import { toast } from "sonner";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
-const LoginForm = () => {
+type LoginFormProps = {
+  verify?: boolean;
+};
+
+const LoginForm = ({ verify }: LoginFormProps) => {
   const { control, formData, handleSubmit, isPending, onSubmit } =
     useLoginMutate();
+
   return (
     <Form {...formData}>
       <form onSubmit={handleSubmit(onSubmit)} className="w-full h-full">
@@ -36,6 +43,15 @@ const LoginForm = () => {
               Enter your credentials and login to your account.
             </CardDescription>
           </CardHeader>
+
+          {verify && (
+            <div className="px-5">
+              <Alert>
+                <AlertTitle>Email Verify</AlertTitle>
+                <AlertDescription>Email Verify Successfully!</AlertDescription>
+              </Alert>
+            </div>
+          )}
 
           <CardContent className="space-y-4">
             <div className="space-y-2">

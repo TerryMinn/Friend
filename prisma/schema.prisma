@@ -15,24 +15,35 @@ datasource db {
 }
 
 model User {
-  id               String            @id @default(cuid())
-  name             String?
-  email            String            @unique
-  image            String?
-  password         String?
-  conversations    Conversation[]
+  id            String         @id @default(cuid())
+  name          String?
+  email         String         @unique
+  image         String?
+  password      String?
+  conversations Conversation[]
+  verifyTokens  EmailVerify[]
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
 
-
-
-model Conversation {
+model EmailVerify {
   id        String   @id @default(cuid())
   user      User     @relation(fields: [userId], references: [id])
   userId    String
-  messages  Json     @default("[]")
+  token     String   @unique
+  expiresAt DateTime @default(dbgenerated("NOW() + INTERVAL '3 minutes'"))
+  isVerify  Boolean  @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Conversation {
+  id       String @id @default(cuid())
+  user     User   @relation(fields: [userId], references: [id])
+  userId   String
+  messages Json   @default("[]")
+
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }

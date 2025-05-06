@@ -4,7 +4,7 @@ import {
   DEFAULT_REDIRECT,
   AUTH_ROUTE,
   PREFIX_ROUTE,
-  PUBLIC_ROUTE,
+  VERIFY_ROUTE,
 } from "@/constants/route";
 
 export async function middleware(req: NextRequest) {
@@ -13,6 +13,8 @@ export async function middleware(req: NextRequest) {
     req,
     secret: process.env.AUTH_SECRET!,
   });
+
+  console.log("\x1b[36m%s\x1b[0m", nextUrl, "next url");
 
   const APIAUTH_ROUTE = nextUrl.pathname.startsWith(PREFIX_ROUTE);
   const isAUTH_ROUTE = AUTH_ROUTE.includes(nextUrl.pathname);
@@ -29,6 +31,9 @@ export async function middleware(req: NextRequest) {
   }
 
   if (!isLogging) {
+    if (nextUrl.pathname === VERIFY_ROUTE) {
+      return undefined;
+    }
     return Response.redirect(new URL("/login", nextUrl));
   }
 
@@ -36,5 +41,7 @@ export async function middleware(req: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|images|favicon.ico|test/).*)"],
+  matcher: [
+    "/((?!api|_next/static|_next/image|images|model|animations|favicon.ico|test/).*)",
+  ],
 };

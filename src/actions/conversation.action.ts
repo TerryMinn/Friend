@@ -4,6 +4,7 @@ import { db } from "@/lib/db/prisma";
 import { getServerSession } from "next-auth";
 import { getUserByEmail } from "./user.action";
 import { revalidatePath } from "next/cache";
+import { signOut } from "next-auth/react";
 
 const AuthVerify = async () => {
   const session = await getServerSession();
