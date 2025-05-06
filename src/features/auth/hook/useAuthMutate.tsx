@@ -8,6 +8,7 @@ import { LoginSchema, RegisterSchema } from "../schema/auth.schema";
 import { DEFAULT_REDIRECT } from "@/constants/route";
 import useToast from "@/hook/useToast";
 import { RegisterUser } from "@/actions/user.action";
+import { ActionState } from "@/type";
 
 const InitialValue = {
   email: "",
@@ -15,23 +16,43 @@ const InitialValue = {
 };
 
 const LoginAction = async (
-  state: SignInResponse | undefined,
+  state: ActionState,
   payload: { email: string; password: string }
 ) => {
   try {
-    return await signIn("credentials", {
+    const res = await signIn("credentials", {
       email: payload.email,
       password: payload.password,
       redirect: false,
     });
+
+    if (!res?.ok) {
+      throw new Error(res!.error as string);
+    }
+
+    return {
+      con: true,
+      message: "Login success",
+    };
   } catch (e) {
     console.log(e);
+    return {
+      con: false,
+      message: e instanceof Error ? e.message : "Something went wrong",
+    };
   }
 };
 
 export const useLoginMutate = () => {
   const router = useRouter();
-  const [state, formAction, isPending] = useActionState(LoginAction, undefined);
+  const [state, formAction, isPending] = useActionState(LoginAction, {
+    con: false,
+    message: "",
+  });
+
+  console.log(state);
+
+  useToast({ state });
 
   const formData = useForm<LoginT>({
     defaultValues: InitialValue,
@@ -56,7 +77,7 @@ export const useLoginMutate = () => {
   };
 
   useEffect(() => {
-    if (state?.ok === true) {
+    if (state?.con === true) {
       router.replace(DEFAULT_REDIRECT);
     }
   }, [state, router]);

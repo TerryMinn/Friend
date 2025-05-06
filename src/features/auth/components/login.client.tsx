@@ -14,11 +14,10 @@ import { Button } from "@/components/ui/button";
 import InputController from "@/components/shared/form/Input-controller";
 import { Form } from "@/components/ui/form";
 import { useLoginMutate } from "../hook/useAuthMutate";
-import ErrorBanner from "@/components/shared/error-banner.client";
 import Link from "next/link";
 
 const LoginForm = () => {
-  const { control, formData, handleSubmit, isPending, onSubmit, state } =
+  const { control, formData, handleSubmit, isPending, onSubmit } =
     useLoginMutate();
   return (
     <Form {...formData}>
@@ -37,14 +36,6 @@ const LoginForm = () => {
               Enter your credentials and login to your account.
             </CardDescription>
           </CardHeader>
-
-          <div className="px-5">
-            <ErrorBanner
-              clean={() => {}}
-              show={state?.ok === false}
-              message={state?.error}
-            />
-          </div>
 
           <CardContent className="space-y-4">
             <div className="space-y-2">
