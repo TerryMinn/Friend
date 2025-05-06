@@ -4,7 +4,6 @@ import BoyAvatar from "@/components/shared/model/boy-avatar";
 import { Environment } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import React from "react";
-import useAiChat from "../hook/useAiChat";
 
 type AvatarEnviromentProps = {
   isSpeaking: boolean;

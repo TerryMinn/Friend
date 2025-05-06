@@ -3,7 +3,6 @@
 import { db } from "@/lib/db/prisma";
 import { getServerSession } from "next-auth";
 import { getUserByEmail } from "./user.action";
-import { ActionReturnType } from "@/type";
 import { revalidatePath } from "next/cache";
 
 const AuthVerify = async () => {
@@ -26,34 +25,31 @@ export const storeConversation = async (payload: ConversationType) => {
   try {
     const authUser = await AuthVerify();
 
-    const conversation_finder = await db.conversation.findFirst({
+    const conversation = await db.conversation.findFirst({
       where: { userId: authUser.id },
     });
 
-    if (!conversation_finder) {
-      await db.$transaction(async (tx) => {
-        const conversation = await tx.conversation.create({
-          data: {
-            userId: authUser.id,
-          },
-        });
+    const newMessage = {
+      message: payload.message,
+      source: payload.source,
+      createdAt: new Date().toISOString(),
+    };
 
-        const message = await tx.message.create({
-          data: {
-            conversationId: conversation.id,
-            source: payload.source,
-            message: payload.message,
-          },
-        });
-
-        return { conversation, message };
+    if (!conversation) {
+      await db.conversation.create({
+        data: {
+          userId: authUser.id,
+          messages: [newMessage],
+        },
       });
     } else {
-      await db.message.create({
+      const existingMessages = (conversation.messages ??
+        []) as ConversationType[];
+
+      await db.conversation.update({
+        where: { id: conversation.id },
         data: {
-          message: payload.message,
-          source: payload.source,
-          conversationId: conversation_finder?.id,
+          messages: [...existingMessages, newMessage],
         },
       });
     }
@@ -67,46 +63,38 @@ export const storeConversation = async (payload: ConversationType) => {
     console.error("Error storing conversation:", e);
     return {
       con: false,
-      message: e instanceof Error ? e.message : "Someting went wrong!",
+      message: e instanceof Error ? e.message : "Something went wrong!",
     };
   }
 };
 
-export const getConversation = async (
-  take: number = 20
-): Promise<ActionReturnType<ConversationType[]>> => {
+export const getConversation = async (): Promise<
+  | { con: true; data: ConversationType[]; message: string }
+  | { con: false; message: string }
+> => {
   try {
     const authUser = await AuthVerify();
 
-    const conversation_finder = await db.conversation.findFirst({
+    const conversation = await db.conversation.findFirst({
       where: { userId: authUser.id },
     });
 
-    if (!conversation_finder) {
+    if (!conversation) {
       return { con: true, data: [], message: "success" };
     }
 
-    const result = await db.message.findMany({
-      where: { conversationId: conversation_finder.id },
-      include: {
-        conversation: true,
-      },
-      orderBy: {
-        createdAt: "asc",
-      },
-      take: take,
-    });
+    const messages = (conversation.messages ?? []) as ConversationType[];
 
     return {
       con: true,
-      data: result,
+      data: messages,
       message: "success",
     };
   } catch (e) {
-    console.error("Error storing conversation:", e);
+    console.error("Error getting conversation:", e);
     return {
       con: false,
-      message: e instanceof Error ? e.message : "Someting went wrong!",
+      message: e instanceof Error ? e.message : "Something went wrong!",
     };
   }
 };
