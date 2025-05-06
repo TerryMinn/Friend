@@ -50,8 +50,6 @@ export const useLoginMutate = () => {
     message: "",
   });
 
-  console.log(state);
-
   useToast({ state });
 
   const formData = useForm<LoginT>({

@@ -1,4 +1,4 @@
-import { ScrollArea } from "@radix-ui/react-scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import React from "react";
 
 type ConversationHistoryProps = {
@@ -6,6 +6,7 @@ type ConversationHistoryProps = {
 };
 
 const ConversationHistory = ({ conversations }: ConversationHistoryProps) => {
+  console.log(conversations, "conversation");
   if (conversations.length === 0) {
     return (
       <div className="flex items-center justify-center h-full text-gray-500">
