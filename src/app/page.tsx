@@ -1,11 +1,4 @@
 import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
 import Link from "next/link";
 
 export default function Home() {
@@ -37,11 +30,11 @@ export default function Home() {
               <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-gray-400 to-gray-600 dark:from-gray-600 dark:to-white opacity-50 blur"></div>
 
               <div className="relative rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 shadow-2xl">
-                <img
+                {/* <img
                   src="/placeholder.svg?height=600&width=600"
                   alt="AI Voice Assistant"
                   className="w-full h-auto"
-                />
+                /> */}
               </div>
 
               <div className="absolute -bottom-4 -right-4 bg-white dark:bg-black text-black dark:text-white rounded-full py-2 px-4 shadow-lg border border-gray-200 dark:border-gray-800">
