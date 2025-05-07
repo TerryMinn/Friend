@@ -5,6 +5,7 @@ import {
   AUTH_ROUTE,
   PREFIX_ROUTE,
   VERIFY_ROUTE,
+  PUBLIC_ROUTE,
 } from "@/constants/route";
 
 export async function middleware(req: NextRequest) {
@@ -15,6 +16,7 @@ export async function middleware(req: NextRequest) {
   });
 
   const APIAUTH_ROUTE = nextUrl.pathname.startsWith(PREFIX_ROUTE);
+  const isPUBLIC_ROUTE = PUBLIC_ROUTE.includes(nextUrl.pathname);
   const isAUTH_ROUTE = AUTH_ROUTE.includes(nextUrl.pathname);
 
   if (APIAUTH_ROUTE) {
@@ -28,7 +30,7 @@ export async function middleware(req: NextRequest) {
     return undefined;
   }
 
-  if (!isLogging) {
+  if (!isLogging && !isPUBLIC_ROUTE) {
     if (nextUrl.pathname === VERIFY_ROUTE) {
       return undefined;
     }

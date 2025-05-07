@@ -17,7 +17,7 @@ export const AUTH_ROUTE: string[] = ["/login", "/register"];
  *
  * @type {string}
  */
-export const DEFAULT_REDIRECT: string = "/";
+export const DEFAULT_REDIRECT: string = "/app";
 
 /**
  * Email verify route
