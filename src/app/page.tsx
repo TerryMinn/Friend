@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
+import Image from "next/image";
 import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black flex flex-col">
+    <div className="min-h-screen   flex flex-col">
       <main className="flex-1 flex items-center justify-center">
         <div className="container mx-auto px-4 py-16 flex flex-col md:flex-row items-center gap-12">
           <div className="flex-1 text-center md:text-left">
@@ -29,12 +30,14 @@ export default function Home() {
             <div className="relative">
               <div className="absolute -inset-1 rounded-lg bg-gradient-to-r from-gray-400 to-gray-600 dark:from-gray-600 dark:to-white opacity-50 blur"></div>
 
-              <div className="relative rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 shadow-2xl">
-                {/* <img
-                  src="/placeholder.svg?height=600&width=600"
-                  alt="AI Voice Assistant"
-                  className="w-full h-auto"
-                /> */}
+              <div className="relative w-full h-full rounded-lg overflow-hidden border border-gray-200 dark:border-gray-800 shadow-2xl">
+                <Image
+                  width={600}
+                  height={600}
+                  src={"/images/intro.png"}
+                  alt="intro.png"
+                  className="w-full h-full object-cover"
+                />
               </div>
 
               <div className="absolute -bottom-4 -right-4 bg-white dark:bg-black text-black dark:text-white rounded-full py-2 px-4 shadow-lg border border-gray-200 dark:border-gray-800">
