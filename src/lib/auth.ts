@@ -14,7 +14,6 @@ declare module "next-auth" {
   }
   interface Session {
     user: {
-      image?: string;
       name: string;
     } & DefaultSession["user"];
   }
@@ -22,7 +21,6 @@ declare module "next-auth" {
 
 declare module "next-auth/jwt" {
   interface JWT {
-    image?: string;
     name: string;
   }
 }
@@ -36,7 +34,6 @@ export const handlers = NextAuth({
 
       if (!userData) return token;
 
-      token.image = userData.image as string;
       token.name = userData.name as string;
       return token;
     },
@@ -47,7 +44,6 @@ export const handlers = NextAuth({
           user: {
             ...session.user,
             role: token.role,
-            image: token.image,
             name: token.name,
           },
         };
@@ -105,7 +101,6 @@ export const handlers = NextAuth({
             id: userFinder.id,
             email: userFinder.email,
             name: userFinder.name as string,
-            image: userFinder.image,
           };
         } else {
           throw new Error("Invalid password");

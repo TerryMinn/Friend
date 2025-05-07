@@ -24,7 +24,7 @@ const ConversationHistory = ({ conversations }: ConversationHistoryProps) => {
 
   return (
     <ScrollArea className="h-full pr-2 sm:pr-4 flex items-end">
-      <div className="space-y-2 sm:space-y-4 pt-20 ">
+      <div className="space-y-2 sm:space-y-4 pt-0 md:pt-20 bg-gray-50 dark:bg-[#18181b] transition-colors duration-300">
         {conversations.map((conversation, index) => (
           <div
             key={index}
@@ -35,8 +35,8 @@ const ConversationHistory = ({ conversations }: ConversationHistoryProps) => {
             <div
               className={`max-w-[85%] sm:max-w-[80%] rounded-lg px-3 py-1.5 sm:px-4 sm:py-2 text-sm sm:text-base ${
                 conversation.source === "user"
-                  ? "bg-blue-600 text-white"
-                  : "bg-gray-200 text-gray-800"
+                  ? "bg-blue-600 text-white dark:bg-blue-500 dark:text-white"
+                  : "bg-gray-200 text-gray-800 dark:bg-gray-800 dark:text-gray-100"
               }`}
             >
               <p>{conversation.message}</p>

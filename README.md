@@ -11,7 +11,6 @@
   <div>
     <img src="https://img.shields.io/badge/-Next_JS-black?style=for-the-badge&logoColor=white&logo=next.js&color=000000" alt="next.js" />
     <img src="https://img.shields.io/badge/-React_v19-black?style=for-the-badge&logoColor=white&logo=react&color=149ECA" alt="react" />
-    <img src="https://img.shields.io/badge/-GSAP-black?style=for-the-badge&logoColor=white&logo=greensock&color=88CE02" alt="greensock" />
     <img src="https://img.shields.io/badge/-Tailwind_CSS_v4-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=030712" alt="tailwindcss" />
     <img src="https://img.shields.io/badge/-Three.js-FFFFFF?style=for-the-badge&logo=three.js&logoColor=black" alt="Three.js Badge" />
    

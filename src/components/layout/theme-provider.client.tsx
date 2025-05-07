@@ -1,7 +1,7 @@
 "use client";
 
-import useCheck from "@/hook/useCheck";
 import { createContext, useContext, useEffect, useState } from "react";
+import useCheck from "@/hook/useCheck";
 
 type Theme = "dark" | "light" | "system";
 
@@ -29,11 +29,13 @@ export function ThemeProvider({
   storageKey = "next-ui-theme",
   ...props
 }: ThemeProviderProps) {
+  const [theme, setTheme] = useState<Theme>(defaultTheme);
   const { isClient } = useCheck();
-  const [theme, setTheme] = useState<Theme>(
-    () =>
-      (isClient && (localStorage.getItem(storageKey) as Theme)) || defaultTheme
-  );
+
+  useEffect(() => {
+    if (!isClient) return;
+    setTheme(localStorage.getItem(storageKey) as Theme);
+  }, [isClient]);
 
   useEffect(() => {
     const root = window.document.documentElement;
