@@ -3,15 +3,10 @@ import { useConversation } from "@11labs/react";
 import { startTransition, useState } from "react";
 
 const useAiChat = () => {
+  const [isEnd, setIsEnd] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [hasPermission, setHasPermission] = useState<boolean>(false);
   const { status, startSession, endSession, isSpeaking } = useConversation({
-    onConnect: () => {
-      console.log("Connected to ElevenLabs");
-    },
-    onDisconnect: () => {
-      console.log("Disconnected from ElevenLabs");
-    },
     onMessage: (message) => {
       console.log("Received message:", message);
 
@@ -31,6 +26,7 @@ const useAiChat = () => {
       startSession({
         agentId: process.env.NEXT_PUBLIC_ELEVENLABS_AGENT_ID,
       });
+      setIsEnd(false);
       setHasPermission(true);
     } catch (error) {
       setErrorMessage("Microphone access denied");
@@ -41,6 +37,7 @@ const useAiChat = () => {
   const handleEndConversation = async () => {
     try {
       await endSession();
+      setIsEnd(true);
     } catch (error) {
       setErrorMessage("Failed to end conversation");
       console.error("Error ending conversation:", error);
@@ -48,7 +45,7 @@ const useAiChat = () => {
   };
 
   return {
-    isSpeaking,
+    isSpeaking: isSpeaking && !isEnd,
     status,
     errorMessage,
     hasPermission,
