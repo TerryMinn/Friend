@@ -8,8 +8,6 @@ const useAiChat = () => {
   const [hasPermission, setHasPermission] = useState<boolean>(false);
   const { status, startSession, endSession, isSpeaking } = useConversation({
     onMessage: (message) => {
-      console.log("Received message:", message);
-
       startTransition(async () => {
         await storeConversation(message);
       });
