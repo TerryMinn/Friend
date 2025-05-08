@@ -4,7 +4,6 @@ import {
   DEFAULT_REDIRECT,
   AUTH_ROUTE,
   PREFIX_ROUTE,
-  VERIFY_ROUTE,
   PUBLIC_ROUTE,
 } from "@/constants/route";
 
@@ -31,9 +30,6 @@ export async function middleware(req: NextRequest) {
   }
 
   if (!isLogging && !isPUBLIC_ROUTE) {
-    if (nextUrl.pathname === VERIFY_ROUTE) {
-      return undefined;
-    }
     return Response.redirect(new URL("/login", nextUrl));
   }
 
