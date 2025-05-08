@@ -35,7 +35,7 @@ export function ThemeProvider({
   useEffect(() => {
     if (!isClient) return;
     setTheme(localStorage.getItem(storageKey) as Theme);
-  }, [isClient]);
+  }, [isClient, storageKey]);
 
   useEffect(() => {
     const root = window.document.documentElement;

@@ -26,7 +26,7 @@ export async function sendVerifyEmail(email: string, token: string) {
     to: email,
     subject: "Confirm your email",
     html: `
-      <p>Click <a href="${confirmEmailUrl}">here</a> to confirm your email</p>
-    `,
+        <p>Click <a href="${confirmEmailUrl}">here</a> to confirm your email</p>
+      `,
   });
 }
