@@ -30,7 +30,7 @@
     preact "10.24.3"
     preact-render-to-string "6.5.11"
 
-"@auth/prisma-adapter@^2.9.0":
+"@auth/prisma-adapter@^2.8.0":
   version "2.9.0"
   resolved "https://registry.yarnpkg.com/@auth/prisma-adapter/-/prisma-adapter-2.9.0.tgz#787fe751553f3d2824081db63f53838675bebc63"
   integrity sha512-Vo/o3YJOa6x2gklQ+XE/JfUf8+CVSDci/nvlOc6psiIiUGigqnQpap2DAxD8brNNYGYKOJ4OAiSt6kQyk3WP3g==
@@ -583,7 +583,7 @@
   resolved "https://registry.yarnpkg.com/@prisma/engines-version/-/engines-version-6.7.0-36.3cff47a7f5d65c3ea74883f1d736e41d68ce91ed.tgz#4ec7c8ee187924a910ec244e3790412d1069d723"
   integrity sha512-EvpOFEWf1KkJpDsBCrih0kg3HdHuaCnXmMn7XFPObpFTzagK1N0Q0FMnYPsEhvARfANP5Ok11QyoTIRA2hgJTA==
 
-"@prisma/engines@6.7.0":
+"@prisma/engines@6.7.0", "@prisma/engines@^6.7.0":
   version "6.7.0"
   resolved "https://registry.yarnpkg.com/@prisma/engines/-/engines-6.7.0.tgz#291835aa5df84e9c33a1cfe1566e639909d46627"
   integrity sha512-3wDMesnOxPrOsq++e5oKV9LmIiEazFTRFZrlULDQ8fxdub5w4NgRBoxtWbvXmj2nJVCnzuz6eFix3OhIqsZ1jw==
