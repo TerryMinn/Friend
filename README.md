@@ -161,4 +161,4 @@ Feel free to reach out if you have any questions or suggestions!
 
 - GitHub: [@TerryMinn](https://github.com/TerryMinn)
 - Twitter: [@TerryMinn](https://x.com/ShinnThantMinn2)
-- Email: devwithterry@gmail.com
+- Email: shinnthantmindev.mm@gmail.com
