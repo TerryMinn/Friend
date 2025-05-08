@@ -64,7 +64,6 @@ export default function BoyAvatar(
   );
 
   useEffect(() => {
-    console.log("is speaking", isSpeaking);
     if (!actions) return;
     Object.values(actions).forEach((action) => action?.stop());
     if (isSpeaking) {

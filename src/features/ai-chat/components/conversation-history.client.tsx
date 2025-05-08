@@ -7,7 +7,6 @@ type ConversationHistoryProps = {
 };
 
 const ConversationHistory = ({ conversations }: ConversationHistoryProps) => {
-  console.log(conversations, "conversation");
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

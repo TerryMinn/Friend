@@ -21,6 +21,13 @@
    <div >
      An immersive AI chat experience featuring a realistic 3D avatar, natural conversations, and fluid animations. 🤖✨
     </div>
+  <br />
+  <div align="center">
+    <a href="URL_ADDRESS-ai.vercel.app/" target="_blank">
+      <img src="public/images/intro.png" style="width: 100%;" alt="Project Screenshot">
+    </a>
+  </div>
+
 </div>
 
 ## Table of Contents
