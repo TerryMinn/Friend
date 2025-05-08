@@ -23,7 +23,7 @@
     </div>
   <br />
   <div align="center">
-    <a href="URL_ADDRESS-ai.vercel.app/" target="_blank">
+    <a href="https://github.com/TerryMinn/Friend/blob/main/public/images/intro.png" target="_blank">
       <img src="public/images/intro.png" style="width: 100%;" alt="Project Screenshot">
     </a>
   </div>
