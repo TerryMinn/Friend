@@ -12,5 +12,6 @@ namespace NodeJS {
 
     // mail
     RESEND_API_KEY: string;
+    SEND_MAIL: string;
   }
 }

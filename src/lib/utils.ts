@@ -22,7 +22,7 @@ export async function sendVerifyEmail(email: string, token: string) {
   const resend = new Resend(resendApiKey);
 
   await resend.emails.send({
-    from: "onborading@resend.dev",
+    from: process.env.SEND_MAIL,
     to: email,
     subject: "Confirm your email",
     html: `
