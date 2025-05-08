@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import ThemeSwitcher from "./theme-switcher.client";
+import ThemeToggle from "./theme-switcher.client";
 import { useSession, signOut } from "next-auth/react";
 import { Loader2 } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -31,7 +31,7 @@ const NavLink = () => {
         <Link href={route}>{routeName}</Link>
       )}
 
-      <ThemeSwitcher />
+      <ThemeToggle />
     </div>
   );
 };
