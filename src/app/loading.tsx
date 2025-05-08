@@ -3,9 +3,8 @@
 import { Loader2 } from 'lucide-react'
 import React from 'react'
 
-type Props = {}
 
-const Loading = (props: Props) => {
+const Loading = () => {
   return (
     <div className="flex items-center justify-center min-h-screen bg-white dark:bg-neutral-800">
      <Loader2  className='animate-pulse'/>
