@@ -59,12 +59,10 @@ The project aims to bridge the gap between traditional chatbots and more persona
 - Smooth, natural animations that respond to conversation
 - Dynamic gestures and body language
 
-🧠 **Thai AI Integration**
+🧠 **AI Integration**
 
 - Powered by ElevenLabs conversation agent
-- Natural Thai language processing
-- Contextual understanding in Thai
-- Culturally-aware responses
+- Natural language processing for natural conversations
 
 💫 **Interactive Experience**
 
