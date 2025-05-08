@@ -61,7 +61,7 @@ The project aims to bridge the gap between traditional chatbots and more persona
 
 🧠 **AI Integration**
 
-- Powered by ElevenLabs conversation agent
+- Powered by **ElevenLabs** conversation agent
 - Natural language processing for natural conversations
 
 💫 **Interactive Experience**
@@ -78,7 +78,7 @@ The project aims to bridge the gap between traditional chatbots and more persona
 📧 **Email Verification**
 
 - Secure email verification system
-- Powered by Resend API
+- Powered by **Resend**
 - Instant verification delivery
 
 ## Tech Stack
