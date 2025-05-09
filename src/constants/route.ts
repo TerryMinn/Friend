@@ -13,6 +13,14 @@ export const AUTH_ROUTE: string[] = ["/login", "/register"];
 export const DEFAULT_REDIRECT: string = "/app";
 
 /**
+ * Route for email verification
+ *
+ * @type {string}
+ */
+
+export const PUBLIC_ROUTE: string[] = ["/", "/verify"];
+
+/**
  * Prefix route for api
  *
  * @type {string[]}
