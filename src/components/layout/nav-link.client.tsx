@@ -1,12 +1,12 @@
 "use client";
 
 import React from "react";
-import ThemeToggle from "./theme-switcher.client";
 import { useSession, signOut } from "next-auth/react";
 import { Loader2 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { AUTH_ROUTE } from "@/constants/route";
+import ThemeToggle from "./theme-toggle.client";
 
 const NavLink = () => {
   const path = usePathname();
