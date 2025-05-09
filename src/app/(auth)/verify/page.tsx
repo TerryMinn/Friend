@@ -36,7 +36,7 @@ const VerifyEmail = async ({ searchParams }: VerifyEmailProps) => {
     },
   });
 
-  redirect("/login?messgae=Email Verify Successfully!&verify=true");
+  redirect("/login?message=Email Verify Successfully!&verify=true");
 };
 
 export default VerifyEmail;
