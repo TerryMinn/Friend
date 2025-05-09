@@ -1,14 +1,26 @@
 import { storeConversation } from "@/actions/conversation.action";
 import { useConversation } from "@11labs/react";
-import { startTransition, useState } from "react";
+import { startTransition, useOptimistic, useState } from "react";
+import { ConversationType } from "../type";
 
-const useAiChat = () => {
+type AiChatType = {
+  conversations: ConversationType[];
+};
+
+const useAiChat = ({ conversations }: AiChatType) => {
   const [isEnd, setIsEnd] = useState<boolean>(true);
+  const [optConversations, setOptConversation] = useOptimistic(
+    conversations,
+    (currentState: ConversationType[], optimisticValue: ConversationType) => {
+      return [...currentState, optimisticValue];
+    }
+  );
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [hasPermission, setHasPermission] = useState<boolean>(false);
   const { status, startSession, endSession, isSpeaking } = useConversation({
     onMessage: (message) => {
       startTransition(async () => {
+        setOptConversation(message);
         await storeConversation(message);
       });
     },
@@ -49,6 +61,7 @@ const useAiChat = () => {
     hasPermission,
     handleStartConversation,
     handleEndConversation,
+    optConversations,
   };
 };
 

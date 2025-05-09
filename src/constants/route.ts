@@ -1,11 +1,4 @@
 /**
- * Array of public routes that don't require authentication.
- *
- * @type {string[]}
- */
-export const PUBLIC_ROUTE: string[] = ["/"];
-
-/**
  * Array of auth routes is for authentication.
  *
  * @type {string[]}

@@ -1,11 +1,6 @@
 import { getToken } from "next-auth/jwt";
 import { NextRequest } from "next/server";
-import {
-  DEFAULT_REDIRECT,
-  AUTH_ROUTE,
-  PREFIX_ROUTE,
-  PUBLIC_ROUTE,
-} from "@/constants/route";
+import { DEFAULT_REDIRECT, AUTH_ROUTE, PREFIX_ROUTE } from "@/constants/route";
 
 export async function middleware(req: NextRequest) {
   const { nextUrl } = req;
@@ -15,8 +10,12 @@ export async function middleware(req: NextRequest) {
   });
 
   const APIAUTH_ROUTE = nextUrl.pathname.startsWith(PREFIX_ROUTE);
-  const isPUBLIC_ROUTE = PUBLIC_ROUTE.includes(nextUrl.pathname);
+  const isVerify = nextUrl.pathname.startsWith("/verify");
   const isAUTH_ROUTE = AUTH_ROUTE.includes(nextUrl.pathname);
+
+  if (isVerify) {
+    return undefined;
+  }
 
   if (APIAUTH_ROUTE) {
     return undefined;
@@ -29,7 +28,7 @@ export async function middleware(req: NextRequest) {
     return undefined;
   }
 
-  if (!isLogging && !isPUBLIC_ROUTE) {
+  if (!isLogging) {
     return Response.redirect(new URL("/login", nextUrl));
   }
 
