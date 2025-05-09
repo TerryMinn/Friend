@@ -19,9 +19,10 @@ import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 type LoginFormProps = {
   message?: string;
+  verify?: string;
 };
 
-const LoginForm = ({ message }: LoginFormProps) => {
+const LoginForm = ({ message, verify }: LoginFormProps) => {
   const { control, formData, handleSubmit, isPending, onSubmit } =
     useLoginMutate();
 
@@ -45,7 +46,7 @@ const LoginForm = ({ message }: LoginFormProps) => {
 
           {message && (
             <div className="px-5">
-              <Alert variant={message ? "destructive" : "default"}>
+              <Alert variant={verify === "false" ? "destructive" : "default"}>
                 <AlertTitle>Email Verify</AlertTitle>
                 <AlertDescription>{message}</AlertDescription>
               </Alert>

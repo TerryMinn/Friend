@@ -10,7 +10,7 @@ type VerifyEmailProps = {
 const VerifyEmail = async ({ searchParams }: VerifyEmailProps) => {
   const { token } = await searchParams;
   if (!token) {
-    redirect("/login");
+    redirect("/login?message=Invalid token&verify=false");
   }
 
   const verifyEmail = await db.emailVerify.findUnique({
@@ -20,11 +20,11 @@ const VerifyEmail = async ({ searchParams }: VerifyEmailProps) => {
   });
 
   if (!verifyEmail) {
-    redirect(`/login?message=Invalid token`);
+    redirect(`/login?message=Invalid token&verify=false`);
   }
 
   if (verifyEmail.expiresAt < new Date()) {
-    redirect(`/login?message=Token expired`);
+    redirect(`/login?message=Token expired&verify=false`);
   }
 
   await db.emailVerify.update({
@@ -36,7 +36,7 @@ const VerifyEmail = async ({ searchParams }: VerifyEmailProps) => {
     },
   });
 
-  redirect("/login?messgae=Email Verify Successfully!");
+  redirect("/login?messgae=Email Verify Successfully!&verify=true");
 };
 
 export default VerifyEmail;

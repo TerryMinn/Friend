@@ -9,15 +9,16 @@ export const metadata: Metadata = {
 
 type LoginProps = {
   searchParams: Promise<{
+    verify?: string;
     message?: string;
   }>;
 };
 
 const Login = async ({ searchParams }: LoginProps) => {
-  const { message } = await searchParams;
+  const { message, verify } = await searchParams;
   return (
     <section className="flex min-h-screen items-center justify-center bg-muted/40 p-4">
-      <LoginForm message={message} />
+      <LoginForm message={message} verify={verify} />
     </section>
   );
 };
