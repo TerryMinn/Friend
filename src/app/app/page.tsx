@@ -1,6 +1,3 @@
-export const dynamic = "force-dynamic";
-
-import { getConversation } from "@/actions/conversation.action";
 import Chat from "@/features/ai-chat/components/chat.client";
 import { Metadata } from "next";
 import React from "react";
@@ -11,11 +8,9 @@ export const metadata: Metadata = {
 };
 
 const App = async () => {
-  const res = await getConversation();
-
   return (
     <main className="flex flex-col h-screen">
-      <Chat conversations={res.data! || []} />
+      <Chat />
     </main>
   );
 };

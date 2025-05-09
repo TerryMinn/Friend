@@ -1,28 +1,40 @@
-import { storeConversation } from "@/actions/conversation.action";
+import {
+  getConversation,
+  storeConversation,
+} from "@/actions/conversation.action";
 import { useConversation } from "@11labs/react";
 import { startTransition, useOptimistic, useState } from "react";
 import { ConversationType } from "../type";
+import { useQuery, useQueryClient } from "@tanstack/react-query";
 
-type AiChatType = {
-  conversations: ConversationType[];
-};
+const useAiChat = () => {
+  const queryClient = useQueryClient();
+  const { data } = useQuery({
+    queryKey: ["conversations"],
+    queryFn: async () => {
+      const res = await getConversation();
+      return res.data;
+    },
+  });
 
-const useAiChat = ({ conversations }: AiChatType) => {
-  const [isEnd, setIsEnd] = useState<boolean>(true);
   const [optConversations, setOptConversation] = useOptimistic(
-    conversations,
+    data || [],
     (currentState: ConversationType[], optimisticValue: ConversationType) => {
       return [...currentState, optimisticValue];
     }
   );
+
+  const [isEnd, setIsEnd] = useState<boolean>(true);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [hasPermission, setHasPermission] = useState<boolean>(false);
+
   const { status, startSession, endSession, isSpeaking } = useConversation({
     onMessage: (message) => {
       startTransition(async () => {
         setOptConversation(message);
         await storeConversation(message);
       });
+      queryClient.invalidateQueries({ queryKey: ["conversations"] });
     },
     onError: (error: string | Error) => {
       setErrorMessage(typeof error === "string" ? error : error.message);

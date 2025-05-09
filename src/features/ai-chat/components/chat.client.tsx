@@ -6,24 +6,21 @@ import ConversationHistory from "./conversation-history.client";
 import { Button } from "@/components/ui/button";
 import { Mic, MicOff } from "lucide-react";
 import useAiChat from "../hook/useAiChat";
-import { ConversationType } from "../type";
+import LoaderFor3D from "./LoaderFor3D";
 
-type ChatProps = {
-  conversations: ConversationType[];
-};
-
-const Chat = ({ conversations }: ChatProps) => {
+const Chat = () => {
   const {
     handleStartConversation,
     status,
     handleEndConversation,
     isSpeaking,
     optConversations,
-  } = useAiChat({ conversations });
+  } = useAiChat();
 
   return (
     <section className="flex flex-col lg:flex-row flex-1 overflow-hidden">
       <div className="w-full lg:w-2/3 h-2/5 sm:h-1/2 lg:h-full">
+        <LoaderFor3D />
         <AvatarEnviroment isSpeaking={isSpeaking} />
       </div>
 
