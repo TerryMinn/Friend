@@ -11,7 +11,7 @@ type AvatarEnviromentProps = {
 
 const AvatarEnviroment = ({ isSpeaking }: AvatarEnviromentProps) => {
   return (
-    <div className="w-full h-full bg-gradient-to-b from-blue-50 to-blue-100">
+    <div className="w-full h-full bg-gradient-to-b dark:from-gray-900 dark:to-gray-800 from-blue-50 to-blue-100">
       <Canvas camera={{ position: [0, 0, 10], fov: 50 }}>
         <ambientLight intensity={0.5} />
         <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} />
