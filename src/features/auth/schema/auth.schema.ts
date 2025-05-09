@@ -6,8 +6,8 @@ export const LoginSchema = z.object({
     .min(8)
     .max(32)
     .regex(
-      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]+$/,
-      "Password must contain at least one uppercase letter, one lowercase letter, one number, and one special character."
+      /^[A-Za-z\d@$!%*?&]+$/,
+      "Password must contain only letters, numbers and special characters"
     ),
   email: z.string().email("Invalid email"),
 });
