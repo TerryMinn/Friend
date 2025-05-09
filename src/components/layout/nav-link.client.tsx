@@ -6,13 +6,12 @@ import { useSession, signOut } from "next-auth/react";
 import { Loader2 } from "lucide-react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import { AUTH_ROUTE } from "@/constants/route";
 
 const NavLink = () => {
   const path = usePathname();
   const { status } = useSession();
-  const route = ["/login", "/register"].filter(
-    (route) => !path.startsWith(route)
-  )[0];
+  const route = AUTH_ROUTE.filter((route) => !path.startsWith(route))[0];
   const routeName =
     route?.replace(/^\//, "").charAt(0).toUpperCase() + route.slice(2);
 

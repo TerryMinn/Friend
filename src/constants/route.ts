@@ -1,9 +1,9 @@
 /**
- * Array of auth routes is for public.
+ * Array of auth routes is for authentication.
  *
  * @type {string[]}
  */
-export const PUBLIC_ROUTE: string[] = ["/login", "/register", "/"];
+export const AUTH_ROUTE: string[] = ["/login", "/register"];
 
 /**
  * Redireact Route after admin Login
