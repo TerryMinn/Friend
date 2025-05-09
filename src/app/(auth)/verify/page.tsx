@@ -20,11 +20,11 @@ const VerifyEmail = async ({ searchParams }: VerifyEmailProps) => {
   });
 
   if (!verifyEmail) {
-    throw new Error("Invalid token");
+    redirect(`/login?message=Invalid token`);
   }
 
   if (verifyEmail.expiresAt < new Date()) {
-    throw new Error("Token expired");
+    redirect(`/login?message=Token expired`);
   }
 
   await db.emailVerify.update({
@@ -36,7 +36,7 @@ const VerifyEmail = async ({ searchParams }: VerifyEmailProps) => {
     },
   });
 
-  redirect("/login?verify=true");
+  redirect("/login?messgae=Email Verify Successfully!");
 };
 
 export default VerifyEmail;

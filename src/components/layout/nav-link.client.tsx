@@ -5,13 +5,14 @@ import ThemeToggle from "./theme-switcher.client";
 import { useSession, signOut } from "next-auth/react";
 import { Loader2 } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { AUTH_ROUTE } from "@/constants/route";
 import Link from "next/link";
 
 const NavLink = () => {
   const path = usePathname();
   const { status } = useSession();
-  const route = AUTH_ROUTE.filter((route) => !path.startsWith(route))[0];
+  const route = ["/login", "/register"].filter(
+    (route) => !path.startsWith(route)
+  )[0];
   const routeName =
     route?.replace(/^\//, "").charAt(0).toUpperCase() + route.slice(2);
 

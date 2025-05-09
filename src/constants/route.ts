@@ -1,9 +1,9 @@
 /**
- * Array of auth routes is for authentication.
+ * Array of auth routes is for public.
  *
  * @type {string[]}
  */
-export const AUTH_ROUTE: string[] = ["/login", "/register"];
+export const PUBLIC_ROUTE: string[] = ["/login", "/register", "/"];
 
 /**
  * Redireact Route after admin Login
@@ -18,7 +18,7 @@ export const DEFAULT_REDIRECT: string = "/app";
  * @type {string}
  */
 
-export const PUBLIC_ROUTE: string[] = ["/", "/verify"];
+export const VERIFY_ROUTE: string = "/verify";
 
 /**
  * Prefix route for api

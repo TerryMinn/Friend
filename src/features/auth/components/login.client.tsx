@@ -18,10 +18,10 @@ import Link from "next/link";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 
 type LoginFormProps = {
-  verify?: boolean;
+  message?: string;
 };
 
-const LoginForm = ({ verify }: LoginFormProps) => {
+const LoginForm = ({ message }: LoginFormProps) => {
   const { control, formData, handleSubmit, isPending, onSubmit } =
     useLoginMutate();
 
@@ -43,11 +43,11 @@ const LoginForm = ({ verify }: LoginFormProps) => {
             </CardDescription>
           </CardHeader>
 
-          {verify && (
+          {message && (
             <div className="px-5">
-              <Alert>
+              <Alert variant={message ? "destructive" : "default"}>
                 <AlertTitle>Email Verify</AlertTitle>
-                <AlertDescription>Email Verify Successfully!</AlertDescription>
+                <AlertDescription>{message}</AlertDescription>
               </Alert>
             </div>
           )}
