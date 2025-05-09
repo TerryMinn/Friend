@@ -15,6 +15,7 @@ const Chat = () => {
     handleEndConversation,
     isSpeaking,
     optConversations,
+    conversationLoading,
   } = useAiChat();
 
   return (
@@ -26,7 +27,10 @@ const Chat = () => {
 
       <div className="w-full lg:w-1/3 h-3/5 sm:h-1/2 lg:h-full flex flex-col bg-gray-50 dark:bg-[#18181b]">
         <div className="flex-1 overflow-y-auto p-2 sm:p-4">
-          <ConversationHistory conversations={optConversations} />
+          <ConversationHistory
+            conversations={optConversations}
+            isLoading={conversationLoading}
+          />
         </div>
 
         <div className="p-2 sm:p-4 bg-white dark:bg-[#232329] border-t border-gray-200 dark:border-gray-700 flex justify-center items-center">

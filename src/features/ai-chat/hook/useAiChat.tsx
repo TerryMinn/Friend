@@ -9,7 +9,7 @@ import { useQuery, useQueryClient } from "@tanstack/react-query";
 
 const useAiChat = () => {
   const queryClient = useQueryClient();
-  const { data } = useQuery({
+  const { data, isLoading: conversationLoading } = useQuery({
     queryKey: ["conversations"],
     queryFn: async () => {
       const res = await getConversation();
@@ -74,6 +74,7 @@ const useAiChat = () => {
     handleStartConversation,
     handleEndConversation,
     optConversations,
+    conversationLoading,
   };
 };
 

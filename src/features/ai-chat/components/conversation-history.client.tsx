@@ -1,17 +1,30 @@
 import { ScrollArea } from "@/components/ui/scroll-area";
 import React, { useEffect, useRef } from "react";
 import { ConversationType } from "../type";
+import { Loader2Icon } from "lucide-react";
 
 type ConversationHistoryProps = {
   conversations: ConversationType[];
+  isLoading: boolean;
 };
 
-const ConversationHistory = ({ conversations }: ConversationHistoryProps) => {
+const ConversationHistory = ({
+  conversations,
+  isLoading,
+}: ConversationHistoryProps) => {
   const endRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     endRef.current?.scrollIntoView({ behavior: "smooth", block: "end" });
   }, [conversations]);
+
+  if (isLoading) {
+    return (
+      <div className="flex items-center justify-center h-full">
+        <Loader2Icon className="animate-spin" />
+      </div>
+    );
+  }
 
   if (conversations.length === 0) {
     return (
