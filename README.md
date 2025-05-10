@@ -1,7 +1,7 @@
 <div >
   <br />
    <div align="center" >
-    <a href="https://youtu.be/zA9r5zTllx4" target="_blank">
+    <a href="https://friend-cyan.vercel.app/" target="_blank">
       <img src="src/app/icon.png" style="border-radius:10px; width: 50%;" alt="Project Banner">
     </a>
     </div>
